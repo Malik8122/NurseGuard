@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.env
+*.egg-info/
+dist/
+build/
+*.pkl
+*.joblib
+
+# Node / Frontend
+node_modules/
+dist/
+.vite/
+
+# Misc
+.DS_Store
+*.log
+*.zip
+nurses.csv
+generate_csv.py
+
+# Model binaries (large files)
+model/*.pkl
+model/scaler.pkl

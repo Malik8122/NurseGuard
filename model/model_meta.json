@@ -1,0 +1,52 @@
+{
+  "model_type": "RandomForestRegressor",
+  "n_estimators": 300,
+  "features": [
+    "night_ratio",
+    "evening_ratio",
+    "morning_ratio",
+    "off_ratio",
+    "max_streak",
+    "night_streak",
+    "weekend_work",
+    "bad_transitions",
+    "max_weekly_hrs",
+    "avg_weekly_hrs",
+    "fatigue_load",
+    "rest_violation_ratio"
+  ],
+  "n_features": 12,
+  "train_samples": 2194,
+  "test_samples": 549,
+  "mae": 0.0313,
+  "rmse": 0.082,
+  "r2": 0.9946,
+  "datasets_used": [
+    "inrc2",
+    "bench24",
+    "bench225",
+    "ortec"
+  ],
+  "total_records": 2743,
+  "label_thresholds": {
+    "high_risk": 5.0,
+    "medium": 2.0,
+    "safe": 0.0
+  },
+  "shift_types": [
+    "Morning",
+    "Evening",
+    "Night",
+    "Off",
+    "Early",
+    "Day",
+    "Late"
+  ],
+  "fatigue_params": {
+    "nhs_max_hours_week": 48,
+    "nhs_min_rest_between_shifts": 11,
+    "jc_max_consecutive_days": 5,
+    "jc_max_consecutive_nights": 3,
+    "icn_max_weekend_shifts": 2
+  }
+}
