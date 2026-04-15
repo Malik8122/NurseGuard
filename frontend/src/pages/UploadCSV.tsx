@@ -28,7 +28,7 @@ export default function UploadCSV() {
 
   return (
     <div className="p-6 max-w-3xl">
-      <h1 className="text-2xl font-bold mb-2" style={{ color: 'var(--text)' }}>Upload CSV & generate schedule</h1>
+      <h1 className="text-3xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-purple-600 pb-1">Upload CSV & generate schedule</h1>
       <p className="text-sm mb-8" style={{ color: 'var(--muted)' }}>
         Upload a CSV of nurse credentials. The system will parse it and run the evolutionary algorithm
         to generate an optimised, fatigue-free shift schedule.
@@ -41,12 +41,12 @@ export default function UploadCSV() {
         onDrop={onDrop}
         onClick={() => fileRef.current?.click()}
         className={`border-2 border-dashed rounded-2xl p-16 text-center cursor-pointer transition-all
-          ${dragging ? 'border-emerald-500 bg-emerald-50 dark:bg-emerald-900/10' : 'border-slate-300 dark:border-slate-600 hover:border-emerald-400'}`}>
+          ${dragging ? 'border-indigo-500 bg-indigo-50 dark:bg-indigo-900/10' : 'border-slate-300 dark:border-slate-600 hover:border-indigo-400'}`}>
         <input ref={fileRef} type="file" accept=".csv" className="hidden"
           onChange={e => { const f = e.target.files?.[0]; if (f) handle(f) }} />
 
-        <div className="w-16 h-16 rounded-2xl bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center mx-auto mb-4">
-          <Upload size={28} className="text-emerald-600" />
+        <div className="w-16 h-16 rounded-2xl bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center mx-auto mb-4">
+          <Upload size={28} className="text-indigo-600" />
         </div>
         <p className="font-semibold text-lg mb-2" style={{ color: 'var(--text)' }}>
           {loading ? 'Uploading...' : 'Drop your CSV here or click to browse'}
@@ -65,7 +65,7 @@ export default function UploadCSV() {
         <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
           className="mt-6 rounded-2xl border p-6" style={{ background: 'var(--surface)', borderColor: 'var(--border)' }}>
           <div className="flex items-center gap-3 mb-4">
-            <CheckCircle size={22} className="text-emerald-600" />
+            <CheckCircle size={22} className="text-indigo-600" />
             <h2 className="font-semibold" style={{ color: 'var(--text)' }}>
               Successfully loaded {result.loaded} nurses
             </h2>

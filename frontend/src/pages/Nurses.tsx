@@ -8,8 +8,13 @@ function Avatar({ name, size = 44 }: { name: string; size?: number }) {
   const hue = name.charCodeAt(0) * 37 % 360
   return (
     <div
-      className="rounded-full flex items-center justify-center font-bold text-white flex-shrink-0"
-      style={{ width: size, height: size, fontSize: size * 0.33, background: `hsl(${hue},55%,46%)` }}
+      className="rounded-full flex items-center justify-center font-bold text-white flex-shrink-0 shadow-lg"
+      style={{ 
+        width: size, 
+        height: size, 
+        fontSize: size * 0.35, 
+        background: `linear-gradient(135deg, hsl(${hue},70%,60%), hsl(${hue + 20},80%,45%))` 
+      }}
     >
       {initials}
     </div>
@@ -56,11 +61,11 @@ function NurseCard({ nurse, i }: { nurse: any; i: number }) {
         <div className="flex items-center gap-3 min-w-0">
           <Avatar name={nurse.name || 'NN'} size={44} />
           <div className="min-w-0">
-            <h3 className="font-bold text-[14px] leading-tight truncate" style={{ color: 'var(--text)' }}>
+            <h3 className="font-bold text-[15px] leading-tight truncate" style={{ color: 'var(--text)' }}>
               {nurse.name}
             </h3>
-            <p className="text-[12px] mt-0.5 truncate" style={{ color: 'var(--muted)' }}>
-              {nurse.role} · {nurse.department || nurse.ward || '—'}
+            <p className="text-[12px] mt-1 truncate font-medium" style={{ color: 'var(--muted)' }}>
+              {nurse.role} <span className="opacity-50 mx-1">•</span> {nurse.department || nurse.ward || '—'}
             </p>
           </div>
         </div>
@@ -114,7 +119,7 @@ export default function Nurses() {
       {/* Page header */}
       <div className="page-header">
         <div>
-          <h1 className="page-title">Nurse Management</h1>
+          <h1 className="page-title bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-purple-600">Nurse Management</h1>
           <p className="page-sub">
             {nurses.length} nurse{nurses.length !== 1 ? 's' : ''} found
           </p>

@@ -37,17 +37,17 @@ export default function Login() {
       <div className="hidden lg:flex flex-1 flex-col items-center justify-center p-16 relative overflow-hidden">
         {/* Decorative circles */}
         <div className="absolute top-[-80px] left-[-80px] w-80 h-80 rounded-full opacity-10"
-          style={{ background: 'radial-gradient(circle, #059669, transparent)' }} />
+          style={{ background: 'radial-gradient(circle, #6366f1, transparent)' }} />
         <div className="absolute bottom-[-60px] right-[-60px] w-64 h-64 rounded-full opacity-10"
           style={{ background: 'radial-gradient(circle, #3b82f6, transparent)' }} />
 
         <motion.div initial={{ opacity: 0, x: -24 }} animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }} className="relative z-10 text-center">
-          <div className="w-16 h-16 rounded-2xl bg-emerald-600 flex items-center justify-center mx-auto mb-6 shadow-2xl">
+          <div className="w-16 h-16 rounded-2xl bg-indigo-600 flex items-center justify-center mx-auto mb-6 shadow-2xl">
             <Shield size={30} className="text-white" />
           </div>
           <h1 className="text-4xl font-bold text-white mb-3">NurseGuard</h1>
-          <p className="text-emerald-400 font-medium mb-2">CareSync v2.1</p>
+          <p className="text-indigo-400 font-medium mb-2">CareSync v2.1</p>
           <p className="text-slate-400 text-sm max-w-xs leading-relaxed">
             AI-powered workforce optimization for modern healthcare teams.
           </p>
@@ -77,7 +77,7 @@ export default function Login() {
 
           {/* Mobile logo */}
           <div className="lg:hidden flex items-center gap-3 mb-8">
-            <div className="w-10 h-10 rounded-xl bg-emerald-600 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center">
               <Shield size={20} className="text-white" />
             </div>
             <div>
@@ -96,13 +96,13 @@ export default function Login() {
               </label>
               <input type="text" value={username} onChange={e => setUsername(e.target.value)}
                 placeholder="e.g. admin" required
-                className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all"
+                className="w-full px-5 py-4 rounded-xl text-[15px] outline-none transition-all font-medium"
                 style={{
                   background: 'rgba(255,255,255,0.07)',
                   border: '1px solid rgba(255,255,255,0.12)',
                   color: '#fff',
                 }}
-                onFocus={e => e.currentTarget.style.borderColor = '#059669'}
+                onFocus={e => e.currentTarget.style.borderColor = '#6366f1'}
                 onBlur={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)'}
               />
             </div>
@@ -115,13 +115,13 @@ export default function Login() {
                 <input type={showPw ? 'text' : 'password'} value={password}
                   onChange={e => setPassword(e.target.value)}
                   placeholder="••••••••" required
-                  className="w-full px-4 py-3 pr-11 rounded-xl text-sm outline-none transition-all"
+                  className="w-full px-5 py-4 pr-12 rounded-xl text-[15px] outline-none transition-all font-medium"
                   style={{
                     background: 'rgba(255,255,255,0.07)',
                     border: '1px solid rgba(255,255,255,0.12)',
                     color: '#fff',
                   }}
-                  onFocus={e => e.currentTarget.style.borderColor = '#059669'}
+                  onFocus={e => e.currentTarget.style.borderColor = '#6366f1'}
                   onBlur={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)'}
                 />
                 <button type="button" onClick={() => setShowPw(v => !v)}
@@ -142,7 +142,7 @@ export default function Login() {
             <motion.button type="submit" disabled={loading}
               whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.98 }}
               className="w-full py-3 rounded-xl font-semibold text-sm text-white transition-opacity disabled:opacity-60"
-              style={{ background: 'linear-gradient(135deg, #059669, #047857)' }}>
+              style={{ background: 'linear-gradient(135deg, #6366f1, #4f46e5)' }}>
               {loading ? 'Signing in…' : 'Sign in →'}
             </motion.button>
           </form>
@@ -158,9 +158,9 @@ export default function Login() {
                 <button key={c.user} onClick={() => { setUsername(c.user); setPassword(c.pw) }}
                   className="p-2.5 rounded-lg text-center transition-colors"
                   style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}
-                  onMouseEnter={e => (e.currentTarget.style.background = 'rgba(5,150,105,0.12)')}
+                  onMouseEnter={e => (e.currentTarget.style.background = 'rgba(99, 102, 241, 0.15)')}
                   onMouseLeave={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.04)')}>
-                  <p className="text-[10px] font-bold text-emerald-400">{c.role}</p>
+                  <p className="text-[10px] font-bold text-indigo-400">{c.role}</p>
                   <p className="text-[9px] text-slate-500 mt-0.5 font-mono">{c.user}</p>
                 </button>
               ))}

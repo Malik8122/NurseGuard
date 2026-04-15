@@ -5,7 +5,7 @@ import { api } from '../api'
 
 const REPORT_CARDS = [
   {
-    icon: Users,         iconBg: 'bg-emerald-50 text-emerald-600',
+    icon: Users,         iconBg: 'bg-indigo-50 text-indigo-600',
     title: 'Monthly staff report',
     desc:  'Hours, shifts, overtime per nurse',
     key:   'staff',
@@ -35,7 +35,7 @@ const REPORT_CARDS = [
     key:   'ea',
   },
   {
-    icon: Download,      iconBg: 'bg-emerald-50 text-emerald-600',
+    icon: Download,      iconBg: 'bg-indigo-50 text-indigo-600',
     title: 'Export all data',
     desc:  'Download CSV, PDF, or Excel',
     key:   'export',
@@ -72,7 +72,7 @@ export default function Reports() {
   return (
     <div className="p-6">
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold" style={{ color: 'var(--text)' }}>Reports & analytics</h1>
+        <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-purple-600 pb-1">Reports & analytics</h1>
       </div>
 
       {/* Summary row */}
@@ -93,8 +93,8 @@ export default function Reports() {
             whileHover={{ y: -2 }} whileTap={{ scale: 0.98 }}
             onClick={() => { if (card.key === 'export') exportCSV(); else setActive(active === card.key ? null : card.key) }}
             className={`text-left rounded-2xl border p-6 transition-all
-              ${active === card.key ? 'border-emerald-500 ring-2 ring-emerald-100' : ''}`}
-            style={{ background: 'var(--surface)', borderColor: active === card.key ? '#10B981' : 'var(--border)' }}>
+              ${active === card.key ? 'border-indigo-500 ring-2 ring-indigo-100' : ''}`}
+            style={{ background: 'var(--surface)', borderColor: active === card.key ? '#6366f1' : 'var(--border)' }}>
             <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${card.iconBg}`}>
               <card.icon size={22} />
             </div>
@@ -112,7 +112,7 @@ export default function Reports() {
             style={{ background: 'var(--surface)', borderColor: 'var(--border)' }}>
             <h2 className="font-semibold" style={{ color: 'var(--text)' }}>Monthly staff report</h2>
             <button onClick={exportCSV}
-              className="flex items-center gap-2 text-sm text-emerald-600 hover:text-emerald-700 font-medium">
+              className="flex items-center gap-2 text-sm text-indigo-600 hover:text-indigo-700 font-medium">
               <Download size={15} /> Export CSV
             </button>
           </div>
@@ -145,7 +145,7 @@ export default function Reports() {
                       <span className={`px-2 py-0.5 rounded-full text-xs font-semibold
                         ${r.fatigue_label === 'High risk' ? 'bg-red-100 text-red-600' :
                           r.fatigue_label === 'Medium'    ? 'bg-amber-100 text-amber-600' :
-                                                            'bg-emerald-100 text-emerald-600'}`}>
+                                                            'bg-indigo-100 text-indigo-600'}`}>
                         {r.fatigue_label}
                       </span>
                     </td>

@@ -50,7 +50,7 @@ function NavItem({ to, icon: Icon, label, badge, collapsed }: any) {
           'relative flex items-center rounded-xl transition-all duration-150 group',
           collapsed ? 'mx-2 px-0 py-3.5 justify-center' : 'mx-3 px-4 py-3 gap-3',
           isActive
-            ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-900/30'
+            ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-900/30'
             : 'text-slate-400 hover:bg-white/7 hover:text-slate-200',
         ].join(' ')
       }
@@ -75,7 +75,7 @@ function NavItem({ to, icon: Icon, label, badge, collapsed }: any) {
         <span
           className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold leading-none flex-shrink-0
             ${badge === 'New'
-              ? 'bg-emerald-400/20 text-emerald-300'
+              ? 'bg-indigo-400/20 text-indigo-300'
               : 'bg-red-500 text-white'
             }`}
         >
@@ -130,8 +130,8 @@ export default function Layout() {
           style={{ borderBottom: '1px solid var(--sidebar-border)', minHeight: 'var(--topbar-h)' }}
         >
           <div className="flex items-center flex-1 min-w-0 overflow-hidden">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-700
-                            flex items-center justify-center flex-shrink-0 shadow-lg shadow-emerald-900/40">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 to-indigo-700
+                            flex items-center justify-center flex-shrink-0 shadow-lg shadow-indigo-900/40">
               <Shield size={17} className="text-white" />
             </div>
 
@@ -142,7 +142,7 @@ export default function Layout() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -10 }}
                   transition={{ duration: 0.18 }}
-                  className="ml-3 min-w-0 overflow-hidden"
+                  className="ml-3 min-w-0 overflow-hidden flex flex-col justify-center"
                 >
                   <p className="text-white font-bold text-[15px] leading-none tracking-tight whitespace-nowrap">
                     NurseGuard
@@ -202,7 +202,7 @@ export default function Layout() {
               className="flex items-center gap-3 px-3 py-3 rounded-xl mb-1"
               style={{ background: 'rgba(255,255,255,0.04)' }}
             >
-              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-500 to-teal-700
+              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600
                                flex items-center justify-center flex-shrink-0">
                 <span className="text-white text-[12px] font-bold">{initials}</span>
               </div>
@@ -258,11 +258,11 @@ export default function Layout() {
           }}
         >
           {/* Left */}
-          <div className="min-w-0 mr-4">
-            <h1 className="font-bold text-[15px] leading-none truncate" style={{ color: 'var(--text)' }}>
+          <div className="min-w-0 mr-4 flex flex-col justify-center">
+            <h1 className="font-bold text-[18px] leading-none truncate bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-purple-600 pb-1">
               {pageTitle}
             </h1>
-            <p className="text-[11px] mt-1.5 truncate" style={{ color: 'var(--muted)' }}>
+            <p className="text-[12px] mt-1.5 truncate" style={{ color: 'var(--muted)' }}>
               {new Date().toLocaleDateString('en-GB', {
                 weekday: 'long', day: 'numeric', month: 'long', year: 'numeric',
               })}
@@ -286,8 +286,8 @@ export default function Layout() {
               className="flex items-center gap-2.5 pl-3"
               style={{ borderLeft: '1px solid var(--border)' }}
             >
-              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-500 to-teal-700
-                               flex items-center justify-center flex-shrink-0">
+              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600
+                               flex items-center justify-center flex-shrink-0 shadow-md">
                 <span className="text-white text-[12px] font-bold">{initials}</span>
               </div>
               <div className="hidden sm:block">

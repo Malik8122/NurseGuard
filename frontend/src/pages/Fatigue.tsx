@@ -49,7 +49,7 @@ export default function Fatigue() {
     <div className="page">
       <div className="page-header">
         <div>
-          <h1 className="page-title">Fatigue Monitor</h1>
+          <h1 className="page-title bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-purple-600">Fatigue Monitor</h1>
           <p className="page-sub">
             Threshold: <strong>{threshold}</strong> · Scores above = high risk, 2–{threshold} = medium, below 2 = safe
           </p>
@@ -105,7 +105,7 @@ export default function Fatigue() {
             <Activity size={16} style={{ color: 'var(--accent)' }} />
           </div>
           <div>
-            <h2 className="font-bold text-[14px] leading-none" style={{ color: 'var(--text)' }}>
+            <h2 className="font-bold text-[15px] leading-none bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-purple-600">
               Nurse Fatigue Scores
             </h2>
             <p className="text-[12px] mt-1" style={{ color: 'var(--muted)' }}>

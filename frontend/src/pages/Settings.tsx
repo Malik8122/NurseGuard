@@ -12,11 +12,13 @@ function Field({ label, desc, type = 'number', value, onChange }: any) {
         {desc && <p className="text-xs mt-0.5" style={{ color: 'var(--muted)' }}>{desc}</p>}
       </div>
       {type === 'checkbox' ? (
-        <input type="checkbox" checked={value} onChange={e => onChange(e.target.checked)}
-          className="w-4 h-4 accent-emerald-600" />
+        <label className="relative inline-flex items-center cursor-pointer">
+          <input type="checkbox" checked={value} onChange={e => onChange(e.target.checked)} className="sr-only peer" />
+          <div className="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-600"></div>
+        </label>
       ) : (
         <input type={type} value={value} onChange={e => onChange(type === 'number' ? +e.target.value : e.target.value)}
-          className="w-28 px-3 py-2 rounded-lg border text-sm outline-none text-right"
+          className="w-32 px-4 py-2.5 rounded-xl border text-[14px] font-medium outline-none text-right transition-colors hover:border-indigo-400 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
           style={{ background: 'var(--bg)', borderColor: 'var(--border)', color: 'var(--text)' }} />
       )}
     </div>
@@ -28,9 +30,9 @@ function InputPair({ label1, label2, val1, val2, set1, set2 }: any) {
     <div className="grid grid-cols-2 gap-4 mb-4">
       {[{ label: label1, val: val1, set: set1 }, { label: label2, val: val2, set: set2 }].map(f => (
         <div key={f.label}>
-          <label className="block text-sm mb-1.5" style={{ color: 'var(--muted)' }}>{f.label}</label>
+          <label className="block text-sm font-medium mb-2" style={{ color: 'var(--muted)' }}>{f.label}</label>
           <input type="number" value={f.val} onChange={e => f.set(+e.target.value)}
-            className="w-full px-3 py-2.5 rounded-xl border text-sm outline-none"
+            className="w-full px-4 py-3 rounded-xl border text-[14px] font-medium outline-none transition-colors hover:border-indigo-400 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
             style={{ background: 'var(--bg)', borderColor: 'var(--border)', color: 'var(--text)' }} />
         </div>
       ))}
@@ -57,15 +59,20 @@ export default function Settings() {
   if (!s) return <div className="p-6 text-sm" style={{ color: 'var(--muted)' }}>Loading settings…</div>
 
   return (
-    <div className="p-6 max-w-3xl">
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold" style={{ color: 'var(--text)' }}>Settings</h1>
-        <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} onClick={save}
-          className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium text-white
-            ${saved ? 'bg-emerald-600' : 'bg-slate-800 hover:bg-slate-700'}`}>
-          {saved ? <CheckCircle size={16} /> : <Save size={16} />}
-          {saved ? 'Saved!' : 'Save settings'}
-        </motion.button>
+    <div className="page pb-20">
+      <div className="page-header">
+        <div>
+          <h1 className="page-title bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-purple-600">Settings</h1>
+          <p className="page-sub">Configure scheduling parameters and system rules</p>
+        </div>
+        <div className="page-actions">
+          <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} onClick={save}
+            className={`btn-primary px-6 py-2.5 rounded-xl text-[14px] font-semibold text-white shadow-lg
+              ${saved ? 'bg-indigo-600 shadow-indigo-900/30' : 'bg-slate-800 hover:bg-slate-700 shadow-xl'}`}>
+            {saved ? <CheckCircle size={16} /> : <Save size={16} />}
+            {saved ? 'Saved!' : 'Save settings'}
+          </motion.button>
+        </div>
       </div>
 
       {/* EA Algorithm params */}
