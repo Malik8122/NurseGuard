@@ -90,6 +90,7 @@ export default function Schedule() {
   const [ward,       setWard]       = useState('All wards')
   const [result,     setResult]     = useState<any>(null)
   const [uploading,  setUploading]  = useState(false)
+  const [uploadSuccess, setUploadSuccess] = useState(false)
   const fileRef = useRef<HTMLInputElement>(null)
 
   const load = () =>
@@ -117,7 +118,13 @@ export default function Schedule() {
   const uploadCSV = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]; if (!file) return
     setUploading(true)
-    try { await api.uploadNurses(file); load() } catch {}
+    setUploadSuccess(false)
+    try { 
+      await api.uploadNurses(file); 
+      load();
+      setUploadSuccess(true);
+      setTimeout(() => setUploadSuccess(false), 3000)
+    } catch {}
     setUploading(false)
   }
 
@@ -135,7 +142,12 @@ export default function Schedule() {
           <h1 className="page-title bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-purple-600">Shift Schedule</h1>
           <p className="page-sub">View, edit and generate AI-optimised nurse rosters</p>
         </div>
-        <div className="page-actions">
+        <div className="page-actions" style={{ alignItems: 'center' }}>
+          {uploadSuccess && (
+            <motion.span initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} style={{ color: '#22c55e', fontWeight: 600, fontSize: '0.9rem', marginRight: 8 }}>
+              Uploaded successfully!
+            </motion.span>
+          )}
           <input ref={fileRef} type="file" accept=".csv" onChange={uploadCSV} style={{ display: 'none' }} />
           <button onClick={() => fileRef.current?.click()} className="btn-ghost">
             <Upload size={15} />
@@ -273,7 +285,13 @@ export default function Schedule() {
       )}
 
       {/* ── Schedule table ── */}
-      {rows.length > 0 ? (
+      {generating ? (
+        <div className="card" style={{ padding: '100px 24px', textAlign: 'center' }}>
+          <RefreshCw size={36} style={{ animation: 'spin 1s linear infinite', margin: '0 auto 16px', color: '#6366f1' }} />
+          <h2 style={{ fontWeight: 700, fontSize: '1.25rem', color: 'var(--text)', marginBottom: 8 }}>Option Generation in Progress...</h2>
+          <p style={{ fontSize: '0.95rem', color: 'var(--muted)' }}>The AI is evaluating permutations to find the optimal fatigue-free schedule.</p>
+        </div>
+      ) : rows.length > 0 ? (
         <div className="card" style={{ overflow: 'hidden' }}>
           <div style={{ overflowX: 'auto' }}>
             <table className="data-table">
